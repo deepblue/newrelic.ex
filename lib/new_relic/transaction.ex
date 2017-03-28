@@ -73,4 +73,8 @@ defmodule NewRelic.Transaction do
   defp record_value!(%__MODULE__{name: name}, data, elapsed) do
     NewRelic.Collector.record_value({name, data}, elapsed)
   end
+
+  def record_error(%__MODULE__{name: name}, type, message) do
+    NewRelic.Collector.record_error(name, {type, message})
+  end
 end
